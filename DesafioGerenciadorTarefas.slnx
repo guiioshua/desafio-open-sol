@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DesafioGerenciadorTarefas.Api/DesafioGerenciadorTarefas.Api.csproj" />
+  <Project Path="DesafioGerenciadorTarefas.Core/DesafioGerenciadorTarefas.Core.csproj" />
+  <Project Path="DesafioGerenciadorTarefas.Tests/DesafioGerenciadorTarefas.Tests.csproj" />
+</Solution>
