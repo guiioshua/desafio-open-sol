@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using DesafioGerenciadorTarefas.Core.Enums;
+using DesafioGerenciadorTarefas.Core.Exceptions;
 
 namespace DesafioGerenciadorTarefas.Core.Entities
 {
@@ -15,7 +16,7 @@ namespace DesafioGerenciadorTarefas.Core.Entities
         public TaskItem(string title, string description)
         {
             if (string.IsNullOrWhiteSpace(title))
-                throw new ArgumentException("Title is required", nameof(title));
+                throw new DomainException(ErrorCode.TitleRequired);
                 
             Id = Guid.NewGuid();
             Title = title;
@@ -28,7 +29,7 @@ namespace DesafioGerenciadorTarefas.Core.Entities
         public void UpdateDetails(string title, string description)
         {
             if (string.IsNullOrWhiteSpace(title))
-                throw new ArgumentException("Title is required", nameof(title));
+                throw new DomainException(ErrorCode.TitleRequired);
                 
             Title = title;
             Description = description;
@@ -38,13 +39,13 @@ namespace DesafioGerenciadorTarefas.Core.Entities
         public void UpdateStatus(StatusTask newStatus)
         {
             if (Status == StatusTask.Done)
-                throw new InvalidOperationException("Cannot change the status of a completed task."); 
+                throw new DomainException(ErrorCode.CompletedTaskCannotBeChanged); 
 
             if (Status == StatusTask.Pending && newStatus != StatusTask.InProgress)
-                throw new InvalidOperationException("Invalid state transition. Pending tasks can only be changed to InProgress."); 
+                throw new DomainException(ErrorCode.InvalidStateTransitionToInProgress); 
 
             if (Status == StatusTask.InProgress && newStatus != StatusTask.Done)
-                throw new InvalidOperationException("Invalid state transition. InProgress tasks can only be changed to Done."); 
+                throw new DomainException(ErrorCode.InvalidStateTransitionToDone); 
 
             Status = newStatus;
             LastUpdate = DateTime.UtcNow;
