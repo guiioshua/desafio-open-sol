@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DesafioGerenciadorTarefas.Core\DesafioGerenciadorTarefas.Core.csproj" />
+    <ProjectReference Include="..\DesafioGerenciadorTarefas.Infrastructure\DesafioGerenciadorTarefas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
