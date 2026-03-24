@@ -1,16 +1,17 @@
-﻿using System;
+﻿// 1. DesafioGerenciadorTarefas.Core/DTOs/TaskDTOs.cs
+using System;
 using System.Collections.Generic;
 using DesafioGerenciadorTarefas.Core.Enums;
 
 namespace DesafioGerenciadorTarefas.Core.DTOs
 {
-    public record CreateTaskItemRequest(string Title, string Description);
+    public record CreateTaskRequest(string Title, string Description);
 
-    public record UpdateTaskItemDetailsRequest(string Title, string Description);
+    public record UpdateTaskDetailsRequest(string Title, string Description);
 
-    public record UpdateTaskItemStatusRequest(StatusTask Status);
+    public record UpdateTaskStatusRequest(StatusTask Status);
 
-    public record TaskItemResponse(
+    public record TaskResponse(
         Guid Id,
         string Title,
         string Description,
