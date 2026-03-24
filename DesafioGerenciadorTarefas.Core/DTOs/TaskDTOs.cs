@@ -23,5 +23,8 @@ namespace DesafioGerenciadorTarefas.Core.DTOs
         IEnumerable<T> Items,
         int TotalCount,
         int PageNumber,
-        int PageSize);
+        int PageSize)
+    {
+        public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
+    }
 }
