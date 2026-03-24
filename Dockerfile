@@ -7,7 +7,7 @@ COPY DesafioGerenciadorTarefas.Api/*.csproj DesafioGerenciadorTarefas.Api/
 COPY DesafioGerenciadorTarefas.Core/*.csproj DesafioGerenciadorTarefas.Core/
 COPY DesafioGerenciadorTarefas.Infrastructure/*.csproj DesafioGerenciadorTarefas.Infrastructure/
 COPY DesafioGerenciadorTarefas.Tests/*.csproj DesafioGerenciadorTarefas.Tests/
-RUN dotnet restore
+RUN dotnet restore DesafioGerenciadorTarefas.Api/DesafioGerenciadorTarefas.Api.csproj
 
 COPY . .
 RUN dotnet publish DesafioGerenciadorTarefas.Api -c Release -o /app/publish --no-restore
