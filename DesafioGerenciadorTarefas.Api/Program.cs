@@ -26,11 +26,9 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// TODO: Swagger não é exposto em prod, só para fins do desafio
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
