@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DesafioGerenciadorTarefas.Core.DTOs;
@@ -32,7 +32,12 @@ namespace DesafioGerenciadorTarefas.Api.Controllers
             [FromQuery] int pageSize = 10,
             [FromQuery] StatusTask? status = null)
         {
-            // Paginação e filtros
+            if (pageNumber < 1)
+                return BadRequest(new { error = "O número da página deve ser maior ou igual a 1." });
+
+            if (pageSize < 1 || pageSize > 50)
+                return BadRequest(new { error = "O tamanho da página deve ser entre 1 e 50." });
+
             var response = await _taskService.GetPagedAsync(pageNumber, pageSize, status);
             return Ok(response);
         }
