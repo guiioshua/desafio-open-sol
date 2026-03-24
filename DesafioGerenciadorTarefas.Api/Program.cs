@@ -19,6 +19,13 @@ builder.Services.AddScoped<ITaskService, TaskService>();
 
 var app = builder.Build();
 
+// TODO: Auto-migration apenas para desenvolvimento. Em produção, usaria pipeline CI/CD
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<TaskDbContext>();
+    db.Database.Migrate();
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
