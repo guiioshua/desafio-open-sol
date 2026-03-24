@@ -85,5 +85,8 @@ ehthumbs.db
 *.ldf
 *.ndf
 
+## Environment variables ##
+.env
+
 ## Local tool versions ##
 .config/dotnet-tools.json
