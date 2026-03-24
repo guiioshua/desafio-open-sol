@@ -13,6 +13,8 @@ namespace DesafioGerenciadorTarefas.Core.Entities
         public DateTime CreatedTime { get; private set; }
         public DateTime LastUpdate { get; private set; }
 
+        private TaskItem() { }
+
         public TaskItem(string title, string description)
         {
             if (string.IsNullOrWhiteSpace(title))
